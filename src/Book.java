@@ -1,14 +1,6 @@
 import java.util.Objects;
 
 public class Book {
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return publishingYear == book.publishingYear && bookName.equals(book.bookName) && author.equals(book.author);
-    }
-
     private final String bookName;
     private final Author author;
     private int publishingYear;
@@ -33,7 +25,13 @@ public class Book {
     public String toString() {
         return bookName + ": " + author.toString()+ " " + publishingYear;
     }
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return publishingYear == book.publishingYear && bookName.equals(book.bookName) && author.equals(book.author);
+    }
     @Override
     public int hashCode() {
         return Objects.hash(bookName, author, publishingYear);
